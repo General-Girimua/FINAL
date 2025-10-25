@@ -4,70 +4,164 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathletica | Mathematics Club</title>
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/rfZTggVX/Mathletica-Logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Base Styles */
+        /* Base Styles - Apple's Current Design System */
         :root {
-            --primary: #2c3e50;
-            --secondary: #0000FF; /* Changed to your requested blue */
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #1a252f;
-            --success: #2ecc71;
+            --primary: #1d1d1f;
+            --secondary: #007AFF;
+            --accent: #FF375F;
+            --light: #f5f5f7;
+            --dark: #1d1d1f;
+            --card-bg: #ffffff;
+            --section-bg: #fbfbfd;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --border: #e5e5e7;
+            --header-height: 52px;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
+            background-color: var(--light);
+            color: var(--text-primary);
+            line-height: 1.47059;
             overflow-x: hidden;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
         }
         
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 980px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 22px;
         }
         
-        /* Header */
+        /* Header - Apple's Current Style */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--dark));
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: var(--text-primary);
+            padding: 0;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            border-bottom: none;
+            transition: all 0.3s ease;
         }
         
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            transition: transform 0.3s ease;
         }
         
-        .logo i {
-            font-size: 1.8rem;
-            color: var(--secondary);
+        .logo:hover {
+            transform: scale(1.02);
+        }
+        
+        .logo-image {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .logo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
         
         .logo h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 21px;
+            font-weight: 600;
+            color: #000000;
+            letter-spacing: -0.5px;
+        }
+        
+        /* Navigation - Apple's Current Style */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+        
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.3s;
+            padding: 0;
+            position: relative;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover {
+            opacity: 1;
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-btn {
+            background: #007AFF;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            opacity: 1;
+        }
+        
+        .nav-btn:hover {
+            background: #0077ED;
+            transform: scale(1.04);
         }
         
         /* Mobile Menu */
@@ -75,137 +169,210 @@
             display: none;
             background: none;
             border: none;
-            color: white;
-            font-size: 1.5rem;
+            color: var(--text-primary);
+            font-size: 17px;
             cursor: pointer;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
         }
         
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
+        .menu-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.05);
         }
         
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            padding: 5px 0;
+        /* Hero Section - Apple's Current Style */
+        .hero {
+            background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+            color: var(--text-primary);
+            padding: 120px 0 80px;
+            text-align: center;
             position: relative;
+            overflow: hidden;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
         }
         
-        nav a:hover {
-            color: var(--secondary);
-        }
-        
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--secondary);
-            transition: width 0.3s;
-        }
-        
-        nav a:hover::after {
+        .hero-content {
+            position: relative;
+            z-index: 2;
             width: 100%;
         }
         
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 4rem 0;
-            text-align: center;
+        .math-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .equation {
+            position: absolute;
+            font-family: 'Times New Roman', serif;
+            color: var(--text-primary);
+            opacity: 0.7;
+            animation: float 20s infinite linear;
+        }
+        
+        .equation-1 {
+            top: 15%;
+            left: 8%;
+            font-size: 42px;
+            transform: rotate(-5deg);
+            animation-delay: 0s;
+        }
+        
+        .equation-2 {
+            top: 25%;
+            right: 12%;
+            font-size: 38px;
+            transform: rotate(3deg);
+            animation-delay: -3s;
+        }
+        
+        .equation-3 {
+            bottom: 30%;
+            left: 5%;
+            font-size: 46px;
+            transform: rotate(-2deg);
+            animation-delay: -6s;
+        }
+        
+        .equation-4 {
+            bottom: 20%;
+            right: 8%;
+            font-size: 40px;
+            transform: rotate(4deg);
+            animation-delay: -9s;
+        }
+        
+        .equation-5 {
+            top: 40%;
+            left: 18%;
+            font-size: 44px;
+            transform: rotate(-3deg);
+            animation-delay: -12s;
+        }
+        
+        .equation-6 {
+            top: 60%;
+            right: 18%;
+            font-size: 39px;
+            transform: rotate(2deg);
+            animation-delay: -15s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-15px) rotate(3deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
         }
         
         .hero h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
+            font-size: 80px;
             font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            letter-spacing: -0.015em;
+            position: relative;
+            z-index: 3;
         }
         
         .hero p {
-            font-size: 1.1rem;
+            font-size: 28px;
             max-width: 700px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 40px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            position: relative;
+            z-index: 3;
+            line-height: 1.14286;
         }
         
         .btn {
             display: inline-block;
-            background-color: var(--secondary);
+            background: #007AFF;
             color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
+            padding: 12px 22px;
+            border-radius: 980px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 400;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            margin: 5px;
+            margin: 0 8px;
+            font-size: 17px;
+            position: relative;
+            overflow: hidden;
+            z-index: 3;
         }
         
         .btn:hover {
-            background-color: #0000CC; /* Darker shade for hover */
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background: #0077ED;
+            transform: scale(1.04);
         }
         
         .btn-outline {
-            background-color: transparent;
-            border: 2px solid white;
+            background: transparent;
+            border: 1px solid #007AFF;
+            color: #007AFF;
         }
         
         .btn-outline:hover {
-            background-color: white;
-            color: var(--primary);
+            background: rgba(0, 122, 255, 0.05);
         }
         
         /* Sections */
         section {
-            padding: 3rem 0;
+            padding: 100px 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 60px;
         }
         
         .section-title h2 {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary);
+            font-size: 56px;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            font-weight: 700;
+            line-height: 1.07143;
+            letter-spacing: -0.005em;
         }
         
         .section-title p {
-            color: #666;
-            max-width: 700px;
+            color: var(--text-secondary);
+            max-width: 600px;
             margin: 0 auto;
+            font-size: 28px;
+            line-height: 1.14286;
         }
         
         /* About Section */
+        .about {
+            background-color: var(--section-bg);
+        }
+        
         .about-content {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 60px;
             align-items: center;
         }
         
@@ -214,20 +381,31 @@
         }
         
         .about-text h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
+            font-size: 40px;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            font-weight: 600;
+            line-height: 1.1;
         }
         
         .about-text p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 24px;
+            color: var(--text-secondary);
+            font-size: 21px;
+            line-height: 1.38105;
         }
         
         .about-image {
             width: 100%;
-            border-radius: 10px;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.5s, box-shadow 0.5s;
+        }
+        
+        .about-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
         
         .about-image img {
@@ -238,31 +416,32 @@
         }
         
         .about-image:hover img {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
         
         /* Research Section */
         .research-cards {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1.5rem;
+            gap: 30px;
         }
         
         .research-card {
-            background-color: white;
-            border-radius: 10px;
+            background-color: var(--card-bg);
+            border-radius: 18px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border);
         }
         
         .research-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
         }
         
         .research-image {
-            height: 200px;
+            height: 240px;
             overflow: hidden;
         }
         
@@ -278,27 +457,32 @@
         }
         
         .research-content {
-            padding: 1.5rem;
+            padding: 30px;
         }
         
         .research-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
+            font-size: 28px;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+            font-weight: 600;
+            line-height: 1.14286;
         }
         
         .research-content p {
-            color: #666;
-            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-size: 17px;
+            line-height: 1.47059;
         }
         
         .research-link {
             display: inline-flex;
             align-items: center;
-            color: var(--secondary);
+            color: #007AFF;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 400;
             transition: color 0.3s;
+            font-size: 17px;
         }
         
         .research-link i {
@@ -307,7 +491,7 @@
         }
         
         .research-link:hover {
-            color: var(--primary);
+            color: #0051CC;
         }
         
         .research-link:hover i {
@@ -316,71 +500,86 @@
         
         /* PDF Download Section */
         .pdf-download {
-            background-color: var(--light);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-top: 1.5rem;
+            background-color: rgba(0, 122, 255, 0.05);
+            border-radius: 14px;
+            padding: 24px;
+            margin-top: 24px;
             text-align: center;
-            border-left: 4px solid var(--secondary);
+            border-left: 4px solid #007AFF;
         }
         
         .pdf-download h4 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+            font-weight: 600;
         }
         
         .pdf-download p {
-            margin-bottom: 1rem;
-            color: #666;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+            font-size: 17px;
         }
         
         /* Resources Section */
         .resources {
-            background-color: var(--light);
+            background-color: var(--section-bg);
         }
         
         .resources-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1.5rem;
+            gap: 30px;
         }
         
         .resource-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 1.5rem;
+            background-color: var(--card-bg);
+            border-radius: 18px;
+            padding: 40px 30px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s;
+            border: 1px solid var(--border);
         }
         
         .resource-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
         }
         
         .resource-icon {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, var(--secondary), #0051CC);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
         }
         
         .resource-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
+            font-size: 28px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            font-weight: 600;
+            line-height: 1.14286;
         }
         
         .resource-card p {
-            color: #666;
-            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-size: 17px;
+            line-height: 1.47059;
         }
         
         /* Challenge Section */
         .challenge-content {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 60px;
             align-items: center;
         }
         
@@ -389,20 +588,31 @@
         }
         
         .challenge-text h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
+            font-size: 40px;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            font-weight: 600;
+            line-height: 1.1;
         }
         
         .challenge-text p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 24px;
+            color: var(--text-secondary);
+            font-size: 21px;
+            line-height: 1.38105;
         }
         
         .challenge-image {
             width: 100%;
-            border-radius: 10px;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.5s, box-shadow 0.5s;
+        }
+        
+        .challenge-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
         
         .challenge-image img {
@@ -413,49 +623,88 @@
         
         /* CTA Section */
         .cta {
-            background: linear-gradient(135deg, var(--primary), var(--dark));
+            background: linear-gradient(135deg, #007AFF, #0051CC);
             color: white;
             text-align: center;
-            padding: 3rem 0;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
         }
         
         .cta h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+            font-size: 56px;
+            margin-bottom: 24px;
+            font-weight: 700;
+            line-height: 1.07143;
+            letter-spacing: -0.005em;
         }
         
         .cta p {
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 28px;
+            line-height: 1.14286;
+            opacity: 0.9;
         }
         
         .cta-buttons {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
+            gap: 16px;
+        }
+        
+        .cta .btn {
+            background: white;
+            color: #007AFF;
+        }
+        
+        .cta .btn:hover {
+            background: #f5f5f7;
+        }
+        
+        .cta .btn-outline {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+        }
+        
+        .cta .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
         
         /* Footer */
         footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 3rem 0 2rem;
+            background-color: var(--section-bg);
+            color: var(--text-primary);
+            padding: 60px 0 40px;
+            border-top: 1px solid var(--border);
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 40px;
+            margin-bottom: 40px;
         }
         
         .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
+            font-size: 24px;
+            margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
+            font-weight: 600;
         }
         
         .footer-column h3::after {
@@ -465,7 +714,7 @@
             left: 0;
             width: 50px;
             height: 2px;
-            background-color: var(--secondary);
+            background: #007AFF;
         }
         
         .footer-links {
@@ -473,23 +722,24 @@
         }
         
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
         .footer-links a {
-            color: #bbb;
+            color: var(--text-secondary);
             text-decoration: none;
             transition: color 0.3s;
+            font-size: 17px;
         }
         
         .footer-links a:hover {
-            color: white;
+            color: #007AFF;
         }
         
         .social-links {
             display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 16px;
+            margin-top: 20px;
         }
         
         .social-links a {
@@ -498,38 +748,39 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(0, 122, 255, 0.1);
             border-radius: 50%;
-            color: white;
+            color: #007AFF;
             text-decoration: none;
             transition: all 0.3s;
         }
         
         .social-links a:hover {
-            background-color: var(--secondary);
+            background-color: #007AFF;
+            color: white;
             transform: translateY(-3px);
         }
         
         .copyright {
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #bbb;
-            font-size: 0.9rem;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 14px;
         }
         
         /* Tablet Styles */
         @media (min-width: 768px) {
             .hero {
-                padding: 5rem 0;
+                padding: 160px 0 120px;
             }
             
             .hero h2 {
-                font-size: 2.8rem;
+                font-size: 96px;
             }
             
             .section-title h2 {
-                font-size: 2.3rem;
+                font-size: 80px;
             }
             
             .about-content,
@@ -562,15 +813,15 @@
         /* Desktop Styles */
         @media (min-width: 992px) {
             .logo h1 {
-                font-size: 1.8rem;
+                font-size: 21px;
             }
             
             .hero h2 {
-                font-size: 3rem;
+                font-size: 120px;
             }
             
             .section-title h2 {
-                font-size: 2.5rem;
+                font-size: 96px;
             }
             
             .research-cards {
@@ -586,14 +837,14 @@
             }
             
             nav ul {
-                gap: 2rem;
+                gap: 40px;
             }
         }
         
         /* Mobile Navigation */
         @media (max-width: 767px) {
             .menu-toggle {
-                display: block;
+                display: flex;
             }
             
             nav {
@@ -601,12 +852,15 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background-color: var(--dark);
-                padding: 1rem 0;
+                background-color: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                padding: 20px 0;
                 transform: translateY(-100%);
                 opacity: 0;
                 visibility: hidden;
                 transition: all 0.3s ease;
+                border-bottom: 1px solid var(--border);
             }
             
             nav.active {
@@ -623,8 +877,8 @@
             nav li {
                 width: 100%;
                 text-align: center;
-                padding: 0.8rem 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 12px 0;
+                border-bottom: 1px solid var(--border);
             }
             
             nav li:last-child {
@@ -634,12 +888,36 @@
             .btn {
                 display: block;
                 width: 100%;
-                max-width: 250px;
+                max-width: 280px;
                 margin: 10px auto;
             }
             
             .btn-outline {
                 margin-left: 0;
+            }
+            
+            .equation {
+                font-size: 24px;
+            }
+            
+            .equation-1, .equation-2, .equation-3, .equation-4, .equation-5, .equation-6 {
+                font-size: 28px;
+            }
+            
+            .hero h2 {
+                font-size: 48px;
+            }
+            
+            .hero p {
+                font-size: 21px;
+            }
+            
+            .section-title h2 {
+                font-size: 40px;
+            }
+            
+            .section-title p {
+                font-size: 21px;
             }
         }
     </style>
@@ -650,7 +928,9 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-square-root-alt"></i>
+                    <div class="logo-image">
+                        <img src="https://i.ibb.co/rfZTggVX/Mathletica-Logo.png" alt="Mathletica Logo">
+                    </div>
                     <h1>Mathletica</h1>
                 </div>
                 
@@ -664,7 +944,7 @@
                         <li><a href="#research">Research</a></li>
                         <li><a href="#resources">Resources</a></li>
                         <li><a href="#challenge">Challenge</a></li>
-                        <li><a href="#contact" class="btn">Join Us</a></li>
+                        <li><a href="#contact" class="nav-btn">Join Us</a></li>
                     </ul>
                 </nav>
             </div>
@@ -673,7 +953,16 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
+        <div class="math-background">
+            <div class="equation equation-1">∫ f(x) dx</div>
+            <div class="equation equation-2">∑<sub>n=1</sub><sup>∞</sup> 1/n²</div>
+            <div class="equation equation-3">e<sup>iπ</sup> + 1 = 0</div>
+            <div class="equation equation-4">∇ × E = -∂B/∂t</div>
+            <div class="equation equation-5">F = G(m₁m₂)/r²</div>
+            <div class="equation equation-6">a² + b² = c²</div>
+        </div>
+        
+        <div class="container hero-content">
             <h2>Explore the World of Mathematics</h2>
             <p>Mathletica is a mathematics club for those who seek to embark on a journey with numbers: explore, question, and deeply understand the beauty of mathematics.</p>
             <a href="#about" class="btn">Learn More</a>
@@ -768,7 +1057,7 @@
                     </div>
                     <h3>International Mathematical Olympiad (IMO)</h3>
                     <p>The world championship mathematics competition for high school students, held annually in a different country.</p>
-                    <a href="#" class="btn">Learn More</a>
+                    <a href="https://www.imo-official.org/" target="_blank" class="btn">Learn More</a>
                 </div>
                 <div class="resource-card">
                     <div class="resource-icon">
@@ -776,7 +1065,7 @@
                     </div>
                     <h3>William Lowell Putnam Competition</h3>
                     <p>A challenging mathematics competition for undergraduate college students in the United States and Canada.</p>
-                    <a href="#" class="btn">Learn More</a>
+                    <a href="https://www.maa.org/math-competitions/putnam-competition" target="_blank" class="btn">Learn More</a>
                 </div>
                 <div class="resource-card">
                     <div class="resource-icon">
@@ -784,7 +1073,7 @@
                     </div>
                     <h3>European Girls' Mathematical Olympiad (EGMO)</h3>
                     <p>An international competition for high school girls, created to encourage and support young women in mathematics.</p>
-                    <a href="#" class="btn">Learn More</a>
+                    <a href="https://www.egmo.org/" target="_blank" class="btn">Learn More</a>
                 </div>
             </div>
         </div>
@@ -850,9 +1139,9 @@
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-envelope"></i> contact@mathletica.org</li>
-                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-                        <li><i class="fas fa-map-marker-alt"></i> University Campus, Math Building</li>
+                        <li><i class="fas fa-envelope"></i> mathleticaclub@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +8801754637591</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Chittagong, Bangladesh</li>
                     </ul>
                 </div>
             </div>
@@ -890,7 +1179,7 @@
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - 52,
                         behavior: 'smooth'
                     });
                 }
@@ -901,10 +1190,33 @@
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
-                header.style.backgroundColor = 'rgba(44, 62, 80, 0.95)';
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
             } else {
-                header.style.backgroundColor = '';
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
             }
+        });
+        
+        // Add animation to elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.research-card, .resource-card, .about-image, .challenge-image').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
         });
     </script>
 </body>
