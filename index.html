@@ -9,7 +9,7 @@
         /* Base Styles */
         :root {
             --primary: #2c3e50;
-            --secondary: #3498db;
+            --secondary: #0000FF; /* Changed to your requested blue */
             --accent: #e74c3c;
             --light: #ecf0f1;
             --dark: #1a252f;
@@ -151,7 +151,7 @@
         }
         
         .btn:hover {
-            background-color: #2980b9;
+            background-color: #0000CC; /* Darker shade for hover */
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
@@ -312,6 +312,27 @@
         
         .research-link:hover i {
             transform: translateX(5px);
+        }
+        
+        /* PDF Download Section */
+        .pdf-download {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: center;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .pdf-download h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .pdf-download p {
+            margin-bottom: 1rem;
+            color: #666;
         }
         
         /* Resources Section */
@@ -698,6 +719,15 @@
                         <h3>Number Theory Notes</h3>
                         <p>Comprehensive notes covering prime numbers, modular arithmetic, and Diophantine equations.</p>
                         <a href="#" class="research-link">View Notes <i class="fas fa-arrow-right"></i></a>
+                        
+                        <!-- PDF Download Section -->
+                        <div class="pdf-download">
+                            <h4>Download Number Theory Notes</h4>
+                            <p>Get our comprehensive Number Theory notes in PDF format for offline study.</p>
+                            <a href="In progress.pdf" download="Mathletica_Number_Theory_Notes.pdf" class="btn">
+                                <i class="fas fa-download"></i> Download PDF
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="research-card">
